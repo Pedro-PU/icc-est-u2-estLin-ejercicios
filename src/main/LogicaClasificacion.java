@@ -73,9 +73,10 @@ public class LogicaClasificacion {
         Stack<Integer> pila2 = new Stack<>();
         for(int i = 0; i< pila.size(); i++){
             int aux = pila.pop();
-            if(pila.peek() <= aux){
-                pila2.push(aux);
+            while(!pila2.isEmpty() && pila2.peek()>aux){
+                pila.push(pila2.pop());
             }
+            pila2.push(aux);
         }
         return pila2;
     }
