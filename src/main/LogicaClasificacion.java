@@ -57,7 +57,7 @@ public class LogicaClasificacion {
                 }
             }
         }
-        return true;
+        return pila.isEmpty();
     }
 
     /**
