@@ -15,7 +15,16 @@ public class LogicaClasificacion {
      *         Salida: "odnuM aloH"
      */
     public String invertirCadena(String texto) {
-        return "";
+        Stack<Character> pila = new Stack<>();
+        for(char c : texto.toCharArray()){
+            pila.push(c);
+        }
+        StringBuilder sc = new StringBuilder();
+        while(!pila.isEmpty()){
+            sc.append(pila.pop());
+        }
+        
+        return ""+sc;
     }
 
     /**
@@ -30,7 +39,25 @@ public class LogicaClasificacion {
      *         Salida: true
      */
     public boolean validarSimbolos(String expresion) {
-        return false;
+        Stack<Character> pila = new Stack<>();
+        for(int i = 0; i < expresion.length(); i++){
+            if(expresion.charAt(i) == '(' || expresion.charAt(i) == '[' || expresion.charAt(i) == '{'){
+                pila.push(expresion.charAt(i));
+            }else if(expresion.charAt(i) == ')' || expresion.charAt(i) == ']' || expresion.charAt(i) == '}'){
+                if(pila.isEmpty()){
+                    return false;
+                }
+                if((expresion.charAt(i) == ')' && pila.peek() == '(') ||
+                    (expresion.charAt(i) == ']' && pila.peek() == '[') ||
+                    (expresion.charAt(i) == '}' && pila.peek() == '{')){
+                    pila.pop();
+
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -43,8 +70,14 @@ public class LogicaClasificacion {
      *         Salida: [1, 2, 3, 4]
      */
     public List<Integer> ordenarPila(Stack<Integer> pila) {
-
-        return new ArrayList<>();
+        Stack<Integer> pila2 = new Stack<>();
+        for(int i = 0; i< pila.size(); i++){
+            int aux = pila.pop();
+            if(pila.peek() <= aux){
+                pila2.push(aux);
+            }
+        }
+        return pila2;
     }
 
     /**
