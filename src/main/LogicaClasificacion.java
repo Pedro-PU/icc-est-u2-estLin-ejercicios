@@ -71,7 +71,7 @@ public class LogicaClasificacion {
      */
     public List<Integer> ordenarPila(Stack<Integer> pila) {
         Stack<Integer> pila2 = new Stack<>();
-        for(int i = 0; i< pila.size(); i++){
+        while(!pila.isEmpty()){
             int aux = pila.pop();
             while(!pila2.isEmpty() && pila2.peek()>aux){
                 pila.push(pila2.pop());
